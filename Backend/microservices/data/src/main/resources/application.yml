@@ -1,0 +1,20 @@
+server:
+  port: ${PORTS_MICROSERVICES_DATA:8081}
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
+    enabled: false
+
+cloud-storage:
+      path: "b-u-c"
+
+spring:
+  application:
+    name: data
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${ROUTES_MICROSERVICES_AUTHORITY:http://localhost:8090}/.well-known/jwks.json

@@ -1,0 +1,27 @@
+server:
+  port: ${PORTS_MICROSERVICES_SEARCH:8082}
+cache:
+  expiration-time: 8
+
+routes:
+  connector: ${ROUTES_MICROSERVICES_CONNECTOR:http://localhost:8080}
+  data: ${ROUTES_MICROSERVICES_DATA:http://localhost:8081}
+
+eureka:
+  client:
+    service-url:
+      default-zone:
+        http://localhost:8761/eureka
+    enabled: false
+
+spring:
+  application:
+    name: search
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${ROUTES_MICROSERVICES_AUTHORITY:http://localhost:8090}/.well-known/jwks.json
+  jackson:
+    mapper:
+      ACCEPT_CASE_INSENSITIVE_PROPERTIES: true

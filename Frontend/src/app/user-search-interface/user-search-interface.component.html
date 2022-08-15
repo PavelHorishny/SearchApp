@@ -1,0 +1,27 @@
+<div class="container">
+  <app-header></app-header>
+  <div class="row">
+    <nav class="nav nav-tabs mt-3">
+      <a routerLink="/search" routerLinkActive="active" class="nav-item nav-link">
+        <i class="bi-house-door"></i> Search
+      </a>
+      <a routerLink="/search/response" routerLinkActive="active" class="nav-item nav-link">
+        <i class="bi-person"></i> Search Result
+      </a>
+    </nav>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div *ngIf="!jsonForm || spinner">
+      <app-spinner [headerHeight]="185"></app-spinner>
+    </div>
+    <div class="p-5 mb-4 border bg-light" *ngIf="jsonForm && !spinner">
+      <h3 class="d-flex justify-content-center ps-3 mb-3">{{formName}}</h3>
+      <div>
+        <json-form-component [jsonForm]="jsonForm" (onChange)="enableSpinner($event)"></json-form-component>
+      </div>
+    </div>
+  </div>
+</div>

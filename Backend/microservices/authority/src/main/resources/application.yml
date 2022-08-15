@@ -1,0 +1,34 @@
+server:
+  port: ${PORTS_MICROSERVICES_AUTHORITY:8090}
+
+routes:
+  ui:
+    activation-page: ${ROUTES_UI:http://localhost:4200}/register/
+
+spring:
+  application:
+    name: authority
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/cmiyc_authority_db?createDatabaseIfNotExist=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${MYSQL_USER:admin}
+    password: ${MYSQL_PASS:admin}
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: cmiycpolice@gmail.com
+    password: ${MAIL_PASS}
+
+    properties:
+      mail:
+        smtp:
+          ssl:
+            trust: "*"
+          auth: true
+          starttls:
+          enable: true

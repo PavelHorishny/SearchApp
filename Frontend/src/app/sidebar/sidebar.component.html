@@ -1,0 +1,33 @@
+<div class="col-md-2 float-start">
+  <main>
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark vh-100 w-100">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <img class="me-2 img-fluid"  src="/assets/images/sb-logo-hq-24.svg">
+        <span class="fs-4">CMIYC</span>
+      </a>
+      <hr>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li>
+          <a routerLink="/users" class="nav-link text-white" [ngClass]="{'disabled text-muted': !isUserAdmin}">
+            <i class="bi-person-square me-2"></i>
+            Manage Users
+          </a>
+        </li>
+        <li>
+          <a routerLink="/schemas" class="nav-link text-white" [ngClass]="{'disabled text-muted': !isSchemaAdmin}">
+            <i class="bi-table me-2"></i>
+            Manage Schemas
+          </a>
+        </li>
+        <li>
+          <a routerLink="/search" class="nav-link text-white" [ngClass]="{'disabled text-muted': !isUser}">
+            <i class="bi bi-search me-2"></i>
+            User search
+          </a>
+        </li>
+      </ul>
+      <hr>
+      <a routerLink="/login" class="btn btn-outline-light" (click)="isLogout()">Log out</a>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,40 @@
+<div class="login-wrap">
+  <div class="login-content">
+<div class="d-flex vw-100 vh-100" >
+
+  <main class="form-signin w-100">
+    <div class="alert alert-success mb-5 " *ngIf="showSuccessMessage">
+      <strong>Activation completed!</strong><br><br>
+      You can now log in using the email and password you chose during the registration.
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <h1 class="h3 mb-3 fw-normal">Please enter your email address and password to continue logging in.</h1>
+
+      <div class="form-floating">
+        <input type="email" formControlName="email" class="form-control" id="floatingInput" (ngModelChange)="resetErrorMessage()"
+          placeholder="name@example.com" [ngClass]="{ 'is-invalid': submitted && (controls['email'].errors || errorMessage) }">
+        <label for="floatingInput">Email address</label>
+        <div *ngIf="submitted && controls['email'].errors" class="invalid-feedback mb-2">
+          <div *ngIf="controls['email'].errors['required']">Email is required</div>
+          <div *ngIf="controls['email'].errors['email']">Email is invalid</div>
+        </div>
+      </div>
+      <div class="form-floating">
+        <input type="password" formControlName="password" class="form-control" (ngModelChange)="resetErrorMessage()"
+          placeholder="Password" [ngClass]="{ 'is-invalid': submitted && (controls['password'].errors || errorMessage) }" id="floatingPassword"
+        >
+        <label for="floatingPassword">Password</label>
+        <div *ngIf="submitted" class="invalid-feedback mb-2">
+          <div *ngIf="controls['password'].errors && controls['password'].errors['required']">Password is required</div>
+          <div *ngIf="errorMessage">{{ errorMessage }}</div>
+        </div>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Next</button>
+    </form>
+
+  </main>
+</div>
+</div>
+</div>

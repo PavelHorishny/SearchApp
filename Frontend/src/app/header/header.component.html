@@ -1,0 +1,36 @@
+<header
+  class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
+
+  <div class="row " >
+    <div class="col-auto">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none" >
+        <img class="me-2 img-fluid" src="/assets/images/h-logo-hq.svg">
+        <span class="fs-4 align-text-bottom">CMIYC</span>
+      </a>
+    </div>
+
+    <div *ngIf="isUserAdmin" class="col-auto">
+      <a routerLink="/users" class="nav-link">
+        <i class="bi-person-square"></i>
+        Manage Users
+      </a>
+    </div>
+
+    <div *ngIf="isSchemaAdmin" class="col-auto">
+      <a routerLink="/schemas" class="nav-link">
+        <i class="bi-table"></i>
+        Manage Schemas
+      </a>
+    </div>
+  </div>
+
+  <div class="nav nav-item row">
+    <span class="py-2 mr-3 col-auto">Hello, <b>{{userName}}</b></span>
+
+    <button type="button" class="btn btn-primary col-auto" (click)="isLogout()">
+      <i class="bi bi-door-closed-fill me-2 mb-2"></i>
+      Log out
+    </button>
+  </div>
+
+</header>
